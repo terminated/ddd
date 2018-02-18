@@ -1,0 +1,61 @@
+body {
+  background: gray;
+}
+
+#results{
+  
+  width:450px;
+  height:200px;
+  color:black;
+}
+
+#submit{
+  
+  background-color:blue;
+  color:white;
+  
+}
+
+#test-form,
+#left,
+#right {
+  float: left;
+}
+
+#left {
+  width: 40%;
+}
+
+#right {
+  width: 15%;
+}
+
+#test-form {
+  width: 45%;
+}
+
+h2{
+  font-family:georgia;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: teal;
+  color: #f0ffff;
+}
+
+td,
+th {
+  border: black solid 1px;
+  padding: 5px;
+}
+
+td {
+  background-color: teal;
+  color: white;
+}
+
+th {
+  background-color: blue;
+  color: white;
+  font-family: georgia;
+}
