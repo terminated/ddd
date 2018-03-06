@@ -107,7 +107,7 @@ var a = $("<a />", {
     $(fin).val(defuzzy_weight[i]/maxx);
   }
 
-  
+    
 });
 });
 
