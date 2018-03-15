@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  var url = "http://localhost:3000/ahp/result?par="+"2";
+  $("#dyn").attr("href", url);
+
+
   $("#btnExport").click(function(e) {
   var file = new Blob([$('#json-table').html()], {type:"application/vnd.ms-excel"});
 
@@ -109,7 +113,47 @@ var a = $("<a />", {
 
   
 });
+$("#weight-form").on("submit",function(e){
+  
+  //stop form form submitting
+  e.preventDefault();
+  
+  //the table object 
+  var table = $("#json-table2")[0];
+  
+  var some = formToJSON(table);
+  var finall = JSON.parse(some);
+  // var str = 
+    saveTextAsFile(finall);
+  // console.log(finall[0]["normalized weight"]);
+  // var x = document.cookie;
+  // console.log(x); 
+
+
 });
+});
+function saveTextAsFile(finall)
+{   
+    var str = "";
+    for(var i = 0; i < finall.length; i++){
+      str += finall[i]["normalized weight"];
+      str += " ";
+    }
+    var textToSave = str;
+    var textToSaveAsBlob = new Blob([textToSave], {type:"application/json"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = window.prompt("fileNameToSaveAs", "e.g. T1");
+ 
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    // downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+ 
+    downloadLink.click();
+}
 
 
 function formToJSON(table){//begin function

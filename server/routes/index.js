@@ -8,15 +8,23 @@ module.exports = (app) => {
   }));
 
  app.get('/ahp', function(req, res){
- 	res.sendFile(path.resolve(__dirname+'/../../public/ahp/index.html'));
+    res.sendFile(path.resolve(__dirname+'/../../public/ahp/index.html'));
  });
 
   app.get('/ahp/par1', function(req, res){
- 	res.sendFile(path.resolve(__dirname+'/../../public/ahp/par1.html'));
+    res.sendFile(path.resolve(__dirname+'/../../public/ahp/par1.html'));
+    // console.log(req.body.data);      
+
  });
 
   app.get('/ahp/par2', function(req, res){
- 	res.sendFile(path.resolve(__dirname+'/../../public/ahp/par2.html'));
+    res.sendFile(path.resolve(__dirname+'/../../public/ahp/par2.html'));
  });
+
+  app.get('/ahp/result', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../public/ahp/result.html'));
+ });
+
+  
 
 };

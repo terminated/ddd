@@ -81,94 +81,78 @@ var a = $("<a />", {
   var c = 0;
   var defuzzy_weight = [];
   var maxx = 0;
-  for(var i = 0; i < fir_row.length; i+=3){
+  
+for(var i = 0; i < fir_row.length; i+=3){
 
     var id = c+1;
     c++;
     var str = id.toString();
 
     var fin = "#wt1" + str;
+    console.log(fin);
     var av = (fir_row[i]*arr1[0] + fir_row[i+1]*arr1[1] + fir_row[i+2]*arr1[2])/3.0;
-    // console.log(fin);
+    // console.log(av);
     $(fin).val(av);
     defuzzy_weight.push(av);
     maxx = Math.max(maxx, av);
+}
+
+for(var i = 0; i < defuzzy_weight.length; i++){
+    var id = c+1;
+    c++;
+    var str = id.toString();
+    var fin = "#wt1" + str;
+    console.log(fin);
+    $(fin).val(defuzzy_weight[i]/maxx);
   }
 
-  //   var gm1 = Math.pow(arr[0]*arr2[0], 1/rn);
-  //   var gm2 = Math.pow(arr[1]*arr2[1], 1/rn);
-  //   var gm3 = Math.pow(arr[3]*arr2[2], 1/rn);
-    
-  //   fir_row.push(gm1);
-  //   fir_row.push(gm2);
-  //   fir_row.push(gm3);
-
-  //   sum1 += gm1;
-  //   // console.log(sum1);
-  //   sum2 += gm2;
-  //   sum3 += gm3;
-
-  //   var id = i+1;
-  //   var str = id.toString();
-
-
-  //   // console.log(gm1);
-  //   var fin = '#GM1' + str;
-  //   console.log(fin);
-  //   $(fin).val(gm1);
-  //   fin = "";
-  //   fin = '#GM2' + str;
-  //   $(fin).val(gm2);
-  //   fin = "";
-  //   fin = '#GM3' + str;
-  //   $(fin).val(gm3);
-  //   fin = "";
+  var table = $("#json-table2")[0];
+  var some = formToJSON(table);
+  var finall = JSON.parse(some);
   
 
-  // $(tot1).val(sum1);
-  // $(tot2).val(sum2);
-  // $(tot3).val(sum3);
-
-  // $(rec1).val(1.0/sum1);
-  // $(rec2).val(1.0/sum2);
-  // $(rec3).val(1.0/sum3);
-  
-  // var arr1  = [1.0/sum1,1.0/sum2,1.0/sum3];
-  // arr1.sort();
-  // $(asc1).val(arr1[0]);
-  // $(asc2).val(arr1[1]);
-  // $(asc3).val(arr1[2]);
-  
-  // var c = 0;
-
-  // var defuzzy_weight = [];
-  // var maxx = 0;
-  // for(var i = 0; i < fir_row.length; i+=3){
-
-  //   var id = c+1;
-  //   c++;
-  //   var str = id.toString();
-
-  //   var fin = "#wt1" + str;
-  //   var av = (fir_row[i]*arr1[0] + fir_row[i+1]*arr1[1] + fir_row[i+2]*arr1[2])/3.0;
-  //   // console.log(fin);
-  //   $(fin).val(av);
-  //   defuzzy_weight.push(av);
-  //   maxx = Math.max(maxx, av);
-  // }
-
-  // for(var i = 0; i < defuzzy_weight.length; i++){
-  //   var id = c+1;
-  //   c++;
-  //   var str = id.toString();
-  //   var fin = "#wt1" + str;
-  //   console.log(fin);
-  //   $(fin).val(defuzzy_weight[i]/maxx);
-  // }
-
-    
 });
+$("#weight-form").on("submit",function(e){
+  
+  //stop form form submitting
+  e.preventDefault();
+  
+  //the table object 
+  var table = $("#json-table2")[0];
+  
+  var some = formToJSON(table);
+  var finall = JSON.parse(some);
+
+  saveTextAsFile(finall);
+  // console.log(finall[1]); 
+
+
 });
+
+});
+
+function saveTextAsFile(finall)
+{   
+    var str = "";
+    for(var i = 0; i < finall.length; i++){
+      str += finall[i]["normalized weight"];
+      str += " ";
+    }
+    var textToSave = str;
+    var textToSaveAsBlob = new Blob([textToSave], {type:"application/json"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs =  window.prompt("fileNameToSaveAs", "e.g. T1");
+ 
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    // downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+ 
+    downloadLink.click();
+}
 
 function createTable()
 {
@@ -211,7 +195,9 @@ function createTable()
       var strr = str + r1.toString();
       var finall = strr ;
       td += "<td>" + finall + ":<input type=text " + "id=wt1" + r1.toString()+ "> </td>";
-      td += "<td>" +  "<input type=text " + "id=wt1" + (r1+2).toString()+ "> </td> ";
+      var blit = r1 + parseInt(rn, 10);
+      // console.log(blit);
+      td += "<td>" +  "<input type=text " + "id=wt1" + (blit).toString()+ "> </td> ";
       td = "<tr>" + td + "</tr>";
       $(".tchaka").append(td);
     }
