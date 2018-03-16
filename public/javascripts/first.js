@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  var url = "http://localhost:3000/ahp/result?par="+"2";
+  var url = "http://ahp.cleverapps.io/ahp/result?par="+"2";
   $("#dyn").attr("href", url);
 
 
