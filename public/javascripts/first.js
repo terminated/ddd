@@ -40,9 +40,11 @@ var a = $("<a />", {
     var arr = finall[i].par1.split(',');
     var arr2 = finall[i].par2.split(',');
 
-    var gm1 = Math.cbrt(arr[0]*arr2[0]);
-    var gm2 = Math.cbrt(arr[1]*arr2[1]);
-    var gm3 = Math.cbrt(arr[2]*arr2[2]);
+    console.log(parseFloat(arr[0]));
+
+    var gm1 = Math.sqrt(eval(arr[0])*eval(arr2[0])*1.0);
+    var gm2 = Math.sqrt(eval(arr[1])*eval(arr2[1]));
+    var gm3 = Math.sqrt(eval(arr[2])*eval(arr2[2]));
     
     fir_row.push(gm1);
     fir_row.push(gm2);

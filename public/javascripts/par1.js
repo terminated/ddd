@@ -35,10 +35,10 @@ var a = $("<a />", {
 
 
   for(var i = 0; i < finall.length-3; i++){
-    var gm1 = 1, gm2 = 1, gm3 = 1;
+    var gm1 = 1.0, gm2 = 1.0, gm3 = 1.0;
     for(var r = 0; r < rn; r++){
        var arr = finall[i][ite[r]].split(',');
-       gm1 *= arr[0];gm2 *= arr[1];gm3 *= arr[2];
+       gm1 *= eval(arr[0]);gm2 *= eval(arr[1]);gm3 *= eval(arr[2]);
     }
     gm1 = Math.pow(gm1, 1/rn);
     gm2 = Math.pow(gm2, 1/rn);

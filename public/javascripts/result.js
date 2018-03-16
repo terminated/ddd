@@ -39,26 +39,35 @@ $(document).ready(function() {
     for(var j = 0; j < arr.length; j++){
         fir_row.push("T1");
     }
-    var arr1 = arr;
+    var arr1 = arr.slice();
     arr.sort();
-    // str = "T";
+    str = "T";
     // for(var r = 1; r <= parseInt(rn, 10); r++){
         // var strr = str + r.toString();
         // var c = 0;
-        
+        // console.log(arr);console.log(arr1);
         for(var j = 0; j < arr.length; j++){
             var c = 0;
             for(var k = 0; k < arr.length; k++){
                 if(arr1[j] === arr[k]){
+                    arr[k] = 1000000;
                     c = k;
                     break;
                 }
             }
-            fir_row.push(c);
+            fir_row[c] = str+(j+1).toString();
         }
-
-
-    }
+        var headd = "<br> </br>";
+        // console.log(fir_row);
+        for(var i = 0; i < fir_row.length; i++){
+            if(i === 0){
+                headd += "final rank  : <th id=" + fir_row[i] + ">" + fir_row[i] + "</th>";
+            }else{
+                headd += " <th id=" + fir_row[i] + ">" + fir_row[i] + "</th>";
+            }
+            
+        }
+        $( ".myHead1" ).append(headd);
 });
 });
 
