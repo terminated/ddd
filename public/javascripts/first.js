@@ -31,7 +31,7 @@ var a = $("<a />", {
   //display the results
   var some = formToJSON(table);
   var finall = JSON.parse(some);  
-
+  // console.log(finall);
   var sum1 = 0, sum2 = 0, sum3 = 0;
   var fir_row = [];
 
@@ -39,12 +39,12 @@ var a = $("<a />", {
 
     var arr = finall[i].par1.split(',');
     var arr2 = finall[i].par2.split(',');
+    var arr3 = finall[i].par3.split(',');
+    // console.log(parseFloat(arr[0]));
 
-    console.log(parseFloat(arr[0]));
-
-    var gm1 = Math.sqrt(eval(arr[0])*eval(arr2[0])*1.0);
-    var gm2 = Math.sqrt(eval(arr[1])*eval(arr2[1]));
-    var gm3 = Math.sqrt(eval(arr[2])*eval(arr2[2]));
+    var gm1 = Math.cbrt(eval(arr[0])*eval(arr2[0])*eval(arr3[0]));
+    var gm2 = Math.cbrt(eval(arr[1])*eval(arr2[1])*eval(arr3[1]));
+    var gm3 = Math.cbrt(eval(arr[2])*eval(arr2[2])*eval(arr3[2]));
     
     fir_row.push(gm1);
     fir_row.push(gm2);
@@ -61,7 +61,7 @@ var a = $("<a />", {
 
     // console.log(gm1);
     var fin = '#GM1' + str;
-    console.log(fin);
+    // console.log(fin);
     $(fin).val(gm1);
     fin = "";
     fin = '#GM2' + str;
@@ -98,10 +98,10 @@ var a = $("<a />", {
 
     var fin = "#wt1" + str;
     var av = (fir_row[i]*arr1[0] + fir_row[i+1]*arr1[1] + fir_row[i+2]*arr1[2])/3.0;
-    // console.log(fin);
+    console.log(fin);
     $(fin).val(av);
     defuzzy_weight.push(av);
-    maxx = Math.max(maxx, av);
+    maxx +=  av;
   }
 
   for(var i = 0; i < defuzzy_weight.length; i++){

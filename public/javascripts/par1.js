@@ -94,7 +94,7 @@ for(var i = 0; i < fir_row.length; i+=3){
     // console.log(av);
     $(fin).val(av);
     defuzzy_weight.push(av);
-    maxx = Math.max(maxx, av);
+    maxx +=  av;
 }
 
 for(var i = 0; i < defuzzy_weight.length; i++){
