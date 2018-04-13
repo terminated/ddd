@@ -11,6 +11,10 @@ module.exports = (app) => {
     res.sendFile(path.resolve(__dirname+'/../../public/ahp/index.html'));
  });
 
+ app.get('/topsis', function(req, res){
+    res.sendFile(path.resolve(__dirname+'/../../public/topsis/index.html'));
+ });
+
   app.get('/ahp/par1', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../public/ahp/par1.html'));
     // console.log(req.body.data);      

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+
+</script>
+<script src="/../javascripts/topsis.js">
+</script>
+
+<link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
+<meta charset=utf-8 />
+</head>
+<style>
+th, table{
+    border: 1px solid;
+    border-collapse: collapse;
+}
+.some{
+  /*font-style: italic;*/
+  color:grey;
+  font-family: ARIAL;
+}
+</style>
+<h4 class="some"> Linguistic variables for the importance weight of each criterion and their crisp values</h4>
+<table>
+<tr><th>Linguistic Variable</th><th>Crisp Values</th></tr>
+<tr><th>Very low (VL) </th><th>0.1167</th></tr>
+<tr><th>Low (L) </th><th> 0.3000</th></tr>
+<tr><th>Medium (M) </th><th> 0.5000</th></tr>
+<tr><th>High (H) </th><th> 0.7000</th></tr>
+<tr><th>Very high (VH) </th><th> 0.8833</th></tr>
+</table>
+
+<h4 class="some">  Linguistic variables for ratings and
+their crisp values</h4>
+<table>
+<tr><th>Linguistic Variable</th><th>Crisp Values</th></tr>
+<tr><th>Very Poor (VP) </th><th>0.5000</th></tr>
+<tr><th>Poor (P) </th><th> 2.8333</th></tr>
+<tr><th>Fair (F) </th><th> 5.0000</th></tr>
+<tr><th>Good (G) </th><th> 7.1667</th></tr>
+<tr><th>Very Good (VG) </th><th> 9.5000</th></tr>
+</table>
+
+
+<form>
+<input type="button" onclick="createTable()" value="Create the table">
+</form>
+
+<form id="test-form">
+  <table id='json-table'>
+    <tbody class="tchalla">
+        <tr class = "myHead">
+        </tr>
+
+    </tbody>
+</table>
+<input id="submit1" type="submit" value="submit">
+</form>
+
+
+
+<form id="test-form1">
+  <table id='json-table1'>
+    <tbody class="tchalla1">
+        <tr class = "myHead1">
+        </tr>
+
+    </tbody>
+</table>
+<input id="submit1" type="submit" value="submit">
+</form>
+
+
+
+</html>
