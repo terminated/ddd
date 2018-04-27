@@ -11,16 +11,68 @@
 <link rel="stylesheet" type="text/css" href="./stylesheets/style.css">
 <meta charset=utf-8 />
 </head>
-<style>
-th, table{
-    border: 1px solid;
-    border-collapse: collapse;
+<style type="text/css">
+a:link {
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  color:white;
+  margin-left: 1100px;
+  /*margin-bottom: 1000px;*/
+}
+  input[type=text] {
+ background: transparent;
+    border: inset;
+    /*border-bottom: 1px dashed #83A4C5;*/
+    width: 205px;
+    outline: none;
+    padding: 10px 10px 10px 10px;
+    font-style: bold;
+    color:white;
+     font-family: Arial, Helvetica, sans-serif;
+}
+input[type=submit]{
+  /*font-family : inherit;*/
+  background-color: #005f6f; /* Green */
+  border: dotted;
+  color: white;
+  padding: 5px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+    margin-top: 16px;
+  /*margin-left: 16px;*/
+  /*font-size   : 100%;*/
+}
+input[type=button]{
+  /*font-family : inherit;*/
+  background-color: #005f6f; /* Green */
+  border: dotted;
+  color: white;
+  padding: 5px 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 16px;
+  /*margin-left: 16px;*/
+  /*font-size   : 100%;*/
+}
+
+input, textarea, select, button {
+  width : 150px;
+  margin: 0;
+
+  -webkit-box-sizing: border-box;  For legacy WebKit based browsers 
+  -moz-box-sizing: border-box;  For legacy (Firefox <29) Gecko based browsers 
+  box-sizing: border-box;
 }
 .some{
-  /*font-style: italic;*/
-  color:grey;
-  font-family: ARIAL;
+  color:white;
 }
+body{
+background-color: #394D61;}
 </style>
 <h4 class="some"> Linguistic variables for the importance weight of each criterion and their crisp values</h4>
 <table>
@@ -45,7 +97,7 @@ their crisp values</h4>
 
 
 <form>
-<input type="button" onclick="createTable()" value="Create the table for imp of weight of criteria">
+<input type="button" onclick="createTable()" value="wt. of criteria">
 </form>
 
 <form id="test-form">
@@ -60,7 +112,7 @@ their crisp values</h4>
 </form>
 
 <form>
-<input type="button" onclick="createTable1()" value="Experts rating of alternatives under different criteria">
+<input type="button" onclick="createTable1()" value="rating of altern.">
 </form>
 
 <form id="test-form1">

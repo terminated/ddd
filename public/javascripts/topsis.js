@@ -80,6 +80,7 @@ $(document).ready(function() {
         summ = finn[i]*finn[i];
       }
     }
+    
 });
 }); 
 function blit(exp, cr){

@@ -1,9 +1,143 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+<!-- <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./javascripts/first.js"></script>
     <a href="http://localhost:3000/ahp/">ahp</a>
     <br></br>
     <a href="http://localhost:3000/topsis/">topsis</a>
-</head>
+</head> -->
+<<style type="text/css" media="screen">
+	body, html {
+  color: #000;
+  font-family: 'Inconsolata', monospace;
+  background: url('https://image.ibb.co/mv2706/bluestringsbg.png');
+  background-color: #fff;
+  font-size: 40px;
+}
+
+body:before, body:after {
+    content: "";
+    position: fixed;
+    background: #fff;
+    left: 0;
+    right: 0;
+    height: 15px;
+}
+body:before {
+    top: 0;
+}
+body:after {
+    bottom: 0;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #000;
+  border-bottom: 1px #000 solid;
+}
+
+nav a {
+  font-size: 40px;
+  color: #CC9592;
+}
+
+nav a:hover {
+  color: #B1E8D6;
+  border-bottom: none;
+}
+
+nav {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+h1, h1 a {
+  text-align: center;
+  margin: 0 auto;
+  color: #FFA690;
+  font-size: 60px;
+  text-shadow: 3px 3px #000;
+}
+
+h1 a:hover {
+  color: #B1DCE8;
+}
+
+#container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin: 0 -32%;
+  width: 60%;
+  height: auto;
+  background-color:rgba(255,255,255,0.8);
+  border: 1px #666 dashed;
+  padding: 20px;
+  vertical-align: middle;
+  box-shadow: 5px 5px #666;
+}
+
+#top, #bottom, #left, #right {
+	background: #fff;
+	position: fixed;
+  margin: 15px 0px;
+	}
+#left, #right {
+	top: 0; bottom: 0;
+	width: 15px;
+  z-index: 999;
+}
+#left {
+  left: 0;
+  border-right: 1px #666 dashed;
+}
+#right {
+  right: 0;
+  border-left: 1px #666 dashed;
+}
+#top, #bottom {
+	left: 0; right: 0;
+	height: 0px;
+}
+#top {
+  top: 0;
+  border-bottom: 1px #666 dashed;
+}
+#bottom {
+  bottom: 0;
+  border-top: 1px #666 dashed;
+}
+
+@media
+/* Fairly small screens including iphones */
+only screen and (max-width: 500px),
+/* iPads */
+only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+	#top, #bottom, #left, #right {
+    display: none;
+  }
+  body:before, body:after {
+    display: none;
+  }
+}
+</style>
+<div id="left"></div>
+<div id="right"></div>
+<div id="top"></div>
+<div id="bottom"></div>
+
+<div id="container">
+<h1><a href="/">Welcome</a></h1>
+<nav>
+<a href="http://localhost:3000/ahp" target="_blank">ahp</a>
+•
+<a href="http://localhost:3000/topsis" target="_blank">topsis</a>
+</nav>
+</div>
+</html>
