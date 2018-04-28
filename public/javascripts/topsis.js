@@ -1,4 +1,4 @@
-var cr = 1, at = 1, exp = 1;
+var cr = 1.0, at = 1.0, exp = 1.0;
 var ite = ["E1", "E2", "E3", "E4", "E5", "E6", "E7"];
 var ite1 = ["A1", "A2", "A3", "A4", "A5", "A6", "A7"];
 var map = new Object();
@@ -49,7 +49,7 @@ $(document).ready(function() {
       //display the results
       var some = formToJSON(table);
       var finall = JSON.parse(some);
-      console.log(finall.length);
+      // console.log(finall.length);
       var c = 0, ccc = 0;
       for(var i = 0; i < finall.length; i++){
         // var gm1 = 1.0, gm2 = 1.0, gm3 = 1.0;
@@ -60,6 +60,7 @@ $(document).ready(function() {
         // console.log(mult);
         // console.log(arr);
         arr = arr/exp;
+        // console.log(arr);
         if(ccc < at){
           arr = arr*mult[c];
           ccc++;
@@ -79,10 +80,13 @@ $(document).ready(function() {
 
       if(i%(at) === 0 && i != 0){
         summ -= finn[i]*finn[i];
-
+        // console.log(summ);
         for(var j = i-at; j < i; j++){
           var fin = "#A" + (j+1).toString();
-          $(fin).val(finn[j]/Math.sqrt(summ));
+          console.log(finn[j],1.0/Math.sqrt(summ));
+          // var ttt = finn[j]*(1.0/Math.sqrt(summ));
+          // console.log(ttt);
+          $(fin).val((finn[j]*eval(1.0/Math.sqrt(summ))));
           // res.append(finn[j]/Math.sqrt(summ));
         }
         // i = i - 1;
