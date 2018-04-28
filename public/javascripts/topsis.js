@@ -49,29 +49,33 @@ $(document).ready(function() {
       //display the results
       var some = formToJSON(table);
       var finall = JSON.parse(some);
-      // console.log(finall);
-      var c = 0;
+      console.log(finall.length);
+      var c = 0, ccc = 0;
       for(var i = 0; i < finall.length; i++){
         // var gm1 = 1.0, gm2 = 1.0, gm3 = 1.0;
         var arr = 0;
         for(var r = 0; r < exp; r++){
            arr += map[finall[i][ite[r]]];
         }
-        
+        // console.log(mult);
         // console.log(arr);
         arr = arr/exp;
-        if(c < cr){
+        if(ccc < at){
           arr = arr*mult[c];
+          ccc++;
+          // console.log(mult[c]);
+          // console.log(ccc);
           finn.push(arr);
-        }else{
-          c++;
         }
+        // console.log(at);
+        if(ccc == at){ccc=0;c++;}
+        
     }
     
 
     var summ = 0.0;
     for(var i = 0; i < finn.length; i++){
-      summ += finn[i]*finn[i];
+      summ += finn[i]*finn[i];//console.log(finn[i]);
 
       if(i%(at) === 0 && i != 0){
         summ -= finn[i]*finn[i];
@@ -79,7 +83,7 @@ $(document).ready(function() {
         for(var j = i-at; j < i; j++){
           var fin = "#A" + (j+1).toString();
           $(fin).val(finn[j]/Math.sqrt(summ));
-          res.append(finn[j]/Math.sqrt(summ));
+          // res.append(finn[j]/Math.sqrt(summ));
         }
         // i = i - 1;
         summ = finn[i]*finn[i];
@@ -88,14 +92,14 @@ $(document).ready(function() {
     for(var j = finn.length-at; j < finn.length; j++){
           var fin = "#A" + (j+1).toString();
           $(fin).val(finn[j]/Math.sqrt(summ));
-          res.append(finn[j]/Math.sqrt(summ));
+          // res.append(finn[j]/Math.sqrt(summ));
     }
-    var str
-    for(var i = 0; i < res.length; i+=at){
-      for(int j = i; j < i+at; j++){
+    // var str
+    // for(var i = 0; i < res.length; i+=at){
+    //   for(int j = i; j < i+at; j++){
 
-      }
-    }
+    //   }
+    // }
 });
 }); 
 function blit(exp, cr){
