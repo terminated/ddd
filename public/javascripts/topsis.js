@@ -83,11 +83,11 @@ $(document).ready(function() {
         // console.log(summ);
         for(var j = i-at; j < i; j++){
           var fin = "#A" + (j+1).toString();
-          console.log(finn[j],1.0/Math.sqrt(summ));
+          // console.log(finn[j],1.0/Math.sqrt(summ));
           // var ttt = finn[j]*(1.0/Math.sqrt(summ));
           // console.log(ttt);
           $(fin).val((finn[j]*eval(1.0/Math.sqrt(summ))));
-          // res.append(finn[j]/Math.sqrt(summ));
+          res.push(finn[j]/Math.sqrt(summ));
         }
         // i = i - 1;
         summ = finn[i]*finn[i];
@@ -96,15 +96,45 @@ $(document).ready(function() {
     for(var j = finn.length-at; j < finn.length; j++){
           var fin = "#A" + (j+1).toString();
           $(fin).val(finn[j]/Math.sqrt(summ));
-          // res.append(finn[j]/Math.sqrt(summ));
+          res.push(finn[j]/Math.sqrt(summ));
     }
-    // var str
-    // for(var i = 0; i < res.length; i+=at){
-    //   for(int j = i; j < i+at; j++){
-
-    //   }
-    // }
+    
 });
+  $("#test-form2").on("submit",function(e){
+  
+      //stop form form submitting
+      e.preventDefault();
+      
+      //the table object 
+      var table = $("#json-table2")[0];
+      // console.log($('form').serializeArray());
+      //display the results
+      var some = formToJSON(table);
+      var finall = JSON.parse(some);
+        
+      var minn = [];
+      var maxx = [];
+      var cc = 0;
+      for(var i = at; i < res.length; i+=at){
+        var var_min = 1000000;var var_max = 0;
+        for(var j = 0; j < i; j++){
+          var_max = Math.max(var_max, res[j]);
+          var_min = Math.min(var_min, res[j]);
+          
+        }
+        minn.push(var_min);
+          maxx.push(var_max);
+        cc = i;
+      }
+      var var_min = 1000000;var var_max = 0;
+      for(var i = res.length-at; i < res.length; i++){
+        var_max = Math.max(var_max, res[i]);
+        var_min = Math.min(var_min, res[i]);
+      }
+      minn.push(var_min);
+      maxx.push(var_max);
+      for(var i = 0; i < minn.length; i++)console.log(minn[i]);
+    });
 }); 
 function blit(exp, cr){
     var str = "E";
