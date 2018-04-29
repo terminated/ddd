@@ -133,7 +133,19 @@ $(document).ready(function() {
       }
       minn.push(var_min);
       maxx.push(var_max);
-      for(var i = 0; i < minn.length; i++)console.log(minn[i]);
+      // for(var i = 0; i < minn.length; i++)console.log(minn[i]);
+      var cc = 1;
+      for(var  i = 0; i < minn.length; i++){
+        var str = "#ss" + cc.toString();
+        // console.log(str);
+        $(str).val(minn[i]);
+        cc++;
+      }
+      for(var  i = 0; i < maxx.length; i++){
+        var str = "#ss" + cc.toString();
+        $(str).val(maxx[i]);
+        cc++;
+      }
     });
 }); 
 function blit(exp, cr){
@@ -215,22 +227,26 @@ function blit2(exp, cr){
     //     $( ".myHead" ).append(headd);
     // }
     str = "";
+    var cc = 1;
     for(var r=1;r<=parseInt(2,10);r++)
     {
-        var strr = str + r.toString();
-        var finall = strr ;
-        var temp = "<input type=text"  + " value=1" + ">";
+        var strr = "ss";
+        // var finall = strr ;
+        var temp = "<input type=text"   ;
         var td = "";
+        // var str
         for(var r1 = 1; r1 <= parseInt(cr, 10); r1++)
         {
-            if(r1 === 1)
-            {
-                td += "<td>" + finall + ":" + temp + "</td>";
-            }
-            else
-            {
-                td += "<td>" + temp + "</td>";
-            }
+          var str = strr + cc.toString();
+            // if(r1 === 1)
+            // {
+                td += "<td>" + temp + " id=" + str + ">" + "</td>";
+            // }
+            // else
+            // {
+                // td += "<td>" + temp + "</td>";
+            // }
+            cc++;
         }
         // td += "<td><input type=" + "text" + " id=" + "F" + r.toString() + ">";
         td = "<tr>" + td + "</tr>";
