@@ -7,6 +7,8 @@ map["VG"] = 9.5;map["G"] = 7.1667;map["F"] = 5.0000;map["P"] = 2.8333;map["VP"] 
 var mult = [];
 var finn = [];
 var res = [];
+var ress = [];
+var ress1 = [];
 $(document).ready(function() {
   $("#test-form").on("submit",function(e){
   
@@ -37,7 +39,31 @@ $(document).ready(function() {
 
     });
 
+  $("#test-form3").on("submit",function(e){
   
+      //stop form form submitting
+      e.preventDefault();
+      
+      //the table object 
+      var table = $("#json-table3")[0];
+      // console.log($('form').serializeArray());
+      //display the results
+      var some = formToJSON(table);
+      var finall = JSON.parse(some);
+      var cc = 0;
+      for(var i = 0; i < ress.length; i++){
+        cc++;
+        var str = "#sss" + cc.toString();
+        $(str).val(ress[i]);
+        cc++;
+        str = "#sss" + cc.toString();
+        $(str).val(ress1[i]);
+        cc++;        
+        str = "#sss" + cc.toString();
+        $(str).val(ress1[i]/(ress1[i]+ress[i]));
+      }
+
+    });
   $("#test-form1").on("submit",function(e){
   
       //stop form form submitting
@@ -60,7 +86,7 @@ $(document).ready(function() {
         // console.log(mult);
         // console.log(arr);
         arr = arr/exp;
-        // console.log(arr);
+        console.log(arr);
         if(ccc < at){
           arr = arr*mult[c];
           ccc++;
@@ -114,38 +140,67 @@ $(document).ready(function() {
         
       var minn = [];
       var maxx = [];
-      var cc = 0;
-      for(var i = at; i < res.length; i+=at){
-        var var_min = 1000000;var var_max = 0;
-        for(var j = 0; j < i; j++){
+      var num  = parseInt(at);
+      var cc = 0, i = 0;
+      for( i = num; i < res.length; i=i+num){
+        var var_min = 1000000;
+        var var_max = 0;
+        // console.log(at);
+        for(var j = cc; j < i; j++){
           var_max = Math.max(var_max, res[j]);
           var_min = Math.min(var_min, res[j]);
-          
         }
+
         minn.push(var_min);
-          maxx.push(var_max);
+        maxx.push(var_max);
         cc = i;
+        // console.log(i);
       }
+// console.log(i+at);
+      // console.log(minn.length);
+      // console.log(maxx.length);
       var var_min = 1000000;var var_max = 0;
       for(var i = res.length-at; i < res.length; i++){
         var_max = Math.max(var_max, res[i]);
         var_min = Math.min(var_min, res[i]);
       }
+      
       minn.push(var_min);
       maxx.push(var_max);
-      // for(var i = 0; i < minn.length; i++)console.log(minn[i]);
+
       var cc = 1;
+
       for(var  i = 0; i < minn.length; i++){
         var str = "#ss" + cc.toString();
-        // console.log(str);
+        // console.log(str, maxx[i])
         $(str).val(minn[i]);
         cc++;
       }
+      
       for(var  i = 0; i < maxx.length; i++){
         var str = "#ss" + cc.toString();
+        // console.log(str, maxx[i])
         $(str).val(maxx[i]);
         cc++;
       }
+
+
+      for(var i = 0; i < at; i++){
+        var sum = 0, c = 0, sum1 = 0;        
+        for(var j = i; j+at < res.length; j+=at){
+          sum += (res[j]-minn[c])*(res[j]-minn[c]);
+          sum1 += (res[j]-maxx[c])*(res[j]-maxx[c]);
+          c++;
+        }
+        ress.push(Math.sqrt(sum));
+        ress1.push(Math.sqrt(sum1));
+      }
+
+      // for(var i = 0; i < ress.length; i++){
+      //   console.log(ress[i], ress1[i]);
+      // }
+
+
     });
 }); 
 function blit(exp, cr){
@@ -253,7 +308,35 @@ function blit2(exp, cr){
         $(".tchalla2").append(td);
     }
 }
+function blit3(exp, cr){
 
+    // var str = "E";
+    // for(var r=1;r<=parseInt(exp,10);r++)
+    // {
+    //     var final = str + r.toString();
+    //     var headd = "<th id=" + final + ">" + final + "</th>";
+    //     $( ".myHead" ).append(headd);
+    // }
+    str = "";
+    var cc = 1;
+    for(var r=1;r<=parseInt(at,10);r++)
+    {
+        var strr = "sss";
+        // var finall = strr ;
+        var temp = "<input type=text"   ;
+        var td = "";
+        // var str
+        for(var r1 = 1; r1 <= parseInt(3, 10); r1++)
+        {
+          var str = strr + cc.toString();
+          td += "<td>" + temp + " id=" + str + ">" + "</td>";
+          cc++;
+        }
+        // td += "<td><input type=" + "text" + " id=" + "F" + r.toString() + ">";
+        td = "<tr>" + td + "</tr>";
+        $(".tchalla3").append(td);
+    }
+}
 function createTable()
 {
     cr = window.prompt("Input number of criteria", 1);
@@ -262,6 +345,7 @@ function createTable()
 
     blit(exp, cr);
 }
+
 
 
 function formToJSON(table){//begin function
@@ -358,4 +442,8 @@ function createTable1()
 function createTable2()
 {
     blit2(exp, cr, at);
+}
+function createTable3()
+{
+    blit3(exp, cr, at);
 }
