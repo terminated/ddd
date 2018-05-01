@@ -24,7 +24,8 @@ var a = $("<a />", {
   
   //stop form form submitting
   e.preventDefault();
-  
+    var rr = ["111","234","678","456","1/81/71/6","1/61/51/4","1/41/31/2"];
+
   //the table object 
   var table = $("#json-table")[0];
   // console.log($('form').serializeArray());
