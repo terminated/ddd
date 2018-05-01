@@ -34,7 +34,27 @@ var a = $("<a />", {
   // console.log(finall);
   var sum1 = 0, sum2 = 0, sum3 = 0;
   var fir_row = [];
+var flag = 1;
+  for(var i = 0; i < finall.length-3; i++){
 
+    var arr = finall[i].par1.split(',');
+    var arr2 = finall[i].par2.split(',');
+    var arr3 = finall[i].par3.split(',');
+    
+    var strr = arr[0].toString()+arr[1].toString()+arr[2].toString();
+    var strr2 = arr2[0].toString()+arr2[1].toString()+arr2[2].toString();
+    var strr3 = arr3[0].toString()+arr3[1].toString()+arr3[2].toString();
+
+    console.log(strr, strr2, strr3);
+
+    if(rr.indexOf(strr)<=-1 || rr.indexOf(strr2)<=-1 || rr.indexOf(strr3)<=-1){
+      var cdd = window.prompt("wrong values", "allowed values - 111,234..");
+      // window.location.reload(true);
+      flag = 0;break;
+      }
+    }
+
+    if(flag){
   for(var i = 0; i < finall.length-3; i++){
 
     var arr = finall[i].par1.split(',');
@@ -112,7 +132,7 @@ var a = $("<a />", {
     console.log(fin);
     $(fin).val(defuzzy_weight[i]/maxx);
   }
-
+    }
   
 });
 $("#weight-form").on("submit",function(e){
