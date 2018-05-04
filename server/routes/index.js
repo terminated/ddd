@@ -7,7 +7,7 @@ module.exports = (app) => {
     message: 'Welcome to the Todos API!',
   }));
 
- app.get('/ahp', function(req, res){
+ app.get('/ahp3', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../public/ahp/index.html'));
  });
 
@@ -15,7 +15,7 @@ module.exports = (app) => {
     res.sendFile(path.resolve(__dirname+'/../../public/ahp/index2.html'));
  });
 
- app.get('/ahp3', function(req, res){
+ app.get('/ahp4', function(req, res){
     res.sendFile(path.resolve(__dirname+'/../../public/ahp/index3.html'));
  });
 
